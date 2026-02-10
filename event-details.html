@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - MITRA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #D32F2F;
+            --background-dark: #050505;
+            --card-bg: #151922; /* Dark blue-grey */
+            --text-light: #FFFFFF;
+            --text-gray: #B0B0B0;
+            --font-heading: 'Space Mono', monospace;
+            --font-body: 'Inter', sans-serif;
+            --border-color: rgba(211, 47, 47, 0.2);
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            margin: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 60vh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 60px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0));
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0));
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, var(--background-dark), transparent 80%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            padding: 0 5%;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .event-tags {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-tag.red {
+            background: rgba(211, 47, 47, 0.2);
+            color: var(--primary-red);
+            border: 1px solid rgba(211, 47, 47, 0.3);
+        }
+
+        .event-title {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+        }
+
+        .hero-desc {
+            max-width: 800px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-gray);
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 40px auto 60px; /* Adjusted margin */
+            padding: 0 5%;
+            flex: 1;
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid transparent;
+        }
+        
+        .info-card.red-border {
+            border-left-color: var(--primary-red);
+        }
+
+        .card-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-body {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .rule-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .rule-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .rule-list li::before {
+            content: "•";
+            color: var(--primary-red);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Sidebar Items */
+        .icon-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .icon-box {
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+
+        .label-text {
+            color: #888;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .value-text {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* CTA Button */
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .cta-btn {
+            background-color: var(--primary-red);
+            color: #fff;
+            display: inline-block;
+            min-width: 200px;
+            padding: 18px 30px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-family: var(--font-body);
+        }
+
+        .cta-btn:hover {
+            box-shadow: 0 0 30px rgba(211, 47, 47, 0.4);
+            transform: translateY(-2px);
+            background-color: #b71c1c;
+        }
+
+        .back-nav {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            transition: background 0.3s;
+        }
+
+        .back-nav:hover {
+            background: rgba(211, 47, 47, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .event-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Footer Styles from backup.html */
+        .main-footer {
+            padding: 80px 0 40px;
+            text-align: center;
+            background-color: #000;
+            margin-top: auto; /* Push to bottom */
+            position: relative;
+        }
+
+        .abstract-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .abstract-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary-red);
+        }
+        .shape-3 { width: 150px; height: 150px; top: 50%; left: 10%; }
+        .shape-4 { width: 250px; height: 250px; bottom: 20%; right: 15%; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+            text-align: left;
+        }
+
+        .footer-links, .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links { justify-self: start; }
+        .footer-contact { justify-self: end; text-align: right; }
+
+        .footer-center {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.95em;
+            line-height: 1.8;
+            padding: 0 20px;
+        }
+
+        .footer-links a, .footer-contact a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95em;
+        }
+
+        .footer-links a:hover, .footer-contact a:hover {
+            color: var(--primary-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: flex-end;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: rgba(211, 47, 47, 0.1);
+            color: var(--text-gray);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-red);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-copyright {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #555;
+            font-size: 0.85em;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+        .section-header h2 span { color: var(--primary-red); }
+
+        @media (max-width: 968px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .footer-links, .footer-contact {
+                justify-self: center;
+                text-align: center;
+                align-items: center;
+            }
+            .social-links { justify-content: center; }
+            .footer-center { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="events.html" class="back-nav"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <div id="content-area">
+        <!-- Injected via JS -->
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="main-footer">
+        <div class="abstract-bg">
+            <div class="abstract-shape shape-3"></div>
+            <div class="abstract-shape shape-4"></div>
+        </div>
+        <div class="container">
+            <div class="section-header text-center mx-auto" style="margin-bottom: 40px;">
+                <h2>Contact Us<span>.</span></h2>
+            </div>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="backup.html#hero-top">Home</a>
+                    <a href="backup.html#home">About MITRA</a>
+                    <a href="backup.html#digest">Digest</a>
+                    <a href="events.html">Events</a>
+                    <a href="backup.html#gallery">Gallery</a>
+                </div>
+                <div class="footer-center">
+                    <img src="mitra_logo.png" alt="MITRA Logo" style="height: 60px; margin-bottom: 20px; opacity: 0.9; margin-left: auto; margin-right: auto;">
+                    <p>Empowering future innovators through hands-on robotics education and interdisciplinary learning at MIT.</p>
+                </div>
+                <div class="footer-contact">
+                    <p>Email: <a href="mailto:mitra.mitindia@gmail.com">mitra.mitindia@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+919962488557">+91 99624 88557</a></p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/mitrobotics/" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.linkedin.com/company/mitrobotics/" target="_blank"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2026 MIT Robotics Club. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventId = urlParams.get('id');
+
+            // Find event
+            let event = eventsData.technical.find(e => e.id === eventId) || 
+                        eventsData.workshops.find(e => e.id === eventId);
+
+            if (!event) {
+                document.getElementById('content-area').innerHTML = '<div style="padding:100px; text-align:center;"><h2>Event Not Found</h2></div>';
+                return;
+            }
+
+            document.title = `${event.title} - MITRA`;
+
+            // Default values if data missing
+            const venue = event.venue || "TBA";
+            const time = event.time || "10:00 AM - 04:00 PM";
+            const coorName = event.on_coordinator ? event.on_coordinator.name : "Student Coordinator";
+            const coorPhone = event.on_coordinator ? event.on_coordinator.phone : "+91 98765 43210";
+
+            const html = `
+                <div class="hero-section">
+                    <img src="${event.image}" class="hero-bg" alt="${event.title}">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <div class="event-tags">
+                            <span class="hero-tag red">${event.category || 'Technical'}</span>
+                            <span class="hero-tag">Day 1</span>
+                            <span class="hero-tag">Team: 1-3</span>
+                        </div>
+                        <h1 class="event-title">${event.title}</h1>
+                        <p class="hero-desc">${event.description}</p>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Left Column -->
+                    <div class="left-col">
+                        <div class="info-card">
+                            <h2 class="card-header">About This Event</h2>
+                            <div class="card-body">
+                                <p>${event.description}</p> 
+                                <br>
+                                <p>Join us for an exciting challenge where participants will test their skills in ${event.title}. Compete with the best and showcase your innovation.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h2 class="card-header">Rules & Regulations</h2>
+                            <div class="card-body">
+                                <ul class="rule-list">
+                                    <li>Team size: 1-3 members (Standard)</li>
+                                    ${event.rules.map(rule => `<li>${rule}</li>`).join('')}
+                                    <li>Judges' decision will be final.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="right-col">
+                        <div class="info-card red-border">
+                            <h2 class="card-header">Schedule</h2>
+                            
+                            <div class="icon-label">
+                                <i class="far fa-calendar-alt icon-box"></i>
+                                <div>
+                                    <span class="label-text">Date</span>
+                                    <span class="value-text">${event.timeline}</span>
+                                </div>
+                            </div>
+
+                            <div class="icon-label">
+                                <i class="far fa-clock icon-box"></i>
+                                <div>
+                                    <span class="label-text">Time</span>
+                                    <span class="value-text">${time}</span>
+                                </div>
+                            </div>
+
+                            <div class="icon-label">
+                                <i class="fas fa-map-marker-alt icon-box"></i>
+                                <div>
+                                    <span class="label-text">Venue</span>
+                                    <span class="value-text">${venue}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h2 class="card-header">Contact Person</h2>
+                            <div class="icon-label">
+                                <i class="far fa-user icon-box"></i>
+                                <div>
+                                    <span class="label-text">Name</span>
+                                    <span class="value-text">${coorName}</span>
+                                </div>
+                            </div>
+                             <div class="icon-label">
+                                <i class="fas fa-phone icon-box"></i>
+                                <div>
+                                    <span class="label-text">Phone</span>
+                                    <span class="value-text">${coorPhone}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cta-container">
+                            <a href="#" class="cta-btn">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('content-area').innerHTML = html;
+        });
+    </script>
+</body>
+</html>

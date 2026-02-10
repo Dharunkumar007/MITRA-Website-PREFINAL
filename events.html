@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - MITRA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #D32F2F;
+            --background-dark: #050505;
+            --card-bg: #121212;
+            --text-light: #FFFFFF;
+            --text-gray: #B0B0B0;
+            --font-heading: 'Space Mono', monospace;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            margin: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Nav Tabs */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 100px 0 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 10px 20px;
+            position: relative;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-red);
+            text-shadow: 0 0 10px rgba(211, 47, 47, 0.4);
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .tab-btn.active::after {
+            width: 80%;
+        }
+
+        /* Slider Viewport */
+        .slider-viewport {
+            width: 100%;
+            overflow: hidden;
+            padding-bottom: 60px; /* Reduced from 100px */
+            flex: 1;
+        }
+
+        .slider-track {
+            display: flex;
+            width: 200%;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .slider-block {
+            width: 50%;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2x2 Grid */
+            gap: 40px;
+            align-content: start;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .event-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            height: 100%;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(211, 47, 47, 0.3);
+        }
+
+        .card-image-container {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Enforce 16:9 ratio */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the container */
+            transition: transform 0.5s ease;
+        }
+
+        .event-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: rgba(211, 47, 47, 0.1);
+            color: var(--primary-red);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-title {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            color: white;
+        }
+
+        .card-details {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .card-meta {
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .view-btn {
+            background-color: var(--primary-red);
+            color: #fff;
+            width: 100%;
+            padding: 14px 0;
+            border-radius: 8px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: auto;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .view-btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+        }
+
+        /* Back Button */
+        .back-nav {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            color: var(--text-gray);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+            z-index: 100;
+            font-weight: 500;
+        }
+
+        .back-nav:hover {
+            color: var(--primary-red);
+        }
+
+        @media (max-width: 1024px) {
+            .slider-block {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                max-width: 600px;
+            }
+        }
+
+        /* Footer Styles from backup.html */
+        .main-footer {
+            padding: 80px 0 40px;
+            text-align: center;
+            background-color: #000;
+            margin-top: auto; 
+            position: relative;
+        }
+
+        .abstract-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .abstract-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary-red);
+        }
+        .shape-3 { width: 150px; height: 150px; top: 50%; left: 10%; }
+        .shape-4 { width: 250px; height: 250px; bottom: 20%; right: 15%; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+            text-align: left;
+        }
+
+        .footer-links, .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links { justify-self: start; }
+        .footer-contact { justify-self: end; text-align: right; }
+
+        .footer-center {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.95em;
+            line-height: 1.8;
+            padding: 0 20px;
+        }
+
+        .footer-links a, .footer-contact a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95em;
+        }
+
+        .footer-links a:hover, .footer-contact a:hover {
+            color: var(--primary-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: flex-end;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: rgba(211, 47, 47, 0.1);
+            color: var(--text-gray);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-red);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-copyright {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #555;
+            font-size: 0.85em;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+        .section-header h2 span { color: var(--primary-red); }
+
+        @media (max-width: 968px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .footer-links, .footer-contact {
+                justify-self: center;
+                text-align: center;
+                align-items: center;
+            }
+            .social-links { justify-content: center; }
+            .footer-center { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="backup.html" class="back-nav"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchTab('technical')">Technical Events</button>
+        <button class="tab-btn" onclick="switchTab('workshops')">Workshops</button>
+    </div>
+
+    <!-- Slider Viewport -->
+    <div class="slider-viewport">
+        <div class="slider-track" id="sliderTrack">
+            
+            <!-- Technical Events Block -->
+            <div class="slider-block" id="techBlock">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Workshops Block -->
+            <div class="slider-block" id="workshopBlock">
+                <!-- Injected via JS -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="main-footer">
+        <div class="abstract-bg">
+            <div class="abstract-shape shape-3"></div>
+            <div class="abstract-shape shape-4"></div>
+        </div>
+        <div class="container">
+            <div class="section-header text-center mx-auto" style="margin-bottom: 40px;">
+                <h2>Contact Us<span>.</span></h2>
+            </div>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="backup.html#hero-top">Home</a>
+                    <a href="backup.html#home">About MITRA</a>
+                    <a href="backup.html#digest">Digest</a>
+                    <a href="events.html">Events</a>
+                    <a href="backup.html#gallery">Gallery</a>
+                </div>
+                <div class="footer-center">
+                    <img src="mitra_logo.png" alt="MITRA Logo" style="height: 60px; margin-bottom: 20px; opacity: 0.9; margin-left: auto; margin-right: auto;">
+                    <p>Empowering future innovators through hands-on robotics education and interdisciplinary learning at MIT.</p>
+                </div>
+                <div class="footer-contact">
+                    <p>Email: <a href="mailto:mitra.mitindia@gmail.com">mitra.mitindia@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+919962488557">+91 99624 88557</a></p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/mitrobotics/" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.linkedin.com/company/mitrobotics/" target="_blank"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2026 MIT Robotics Club. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script>
+        // Render Cards
+        function renderCards(data, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = data.map(item => `
+                <div class="event-card">
+                    <div class="card-image-container">
+                        <img src="${item.image}" alt="${item.title}" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">${item.title}</h3>
+                        <div class="card-tags">
+                            <span class="tag">${item.category || 'Event'}</span>
+                            <span class="tag">Day 1</span>
+                        </div>
+                        <div class="card-meta">
+                            <div><i class="far fa-calendar-alt mr-2"></i> ${item.timeline}</div>
+                            <div class="mt-1"><i class="fas fa-users mr-2"></i> Team Size: Varies</div>
+                        </div>
+                        <a href="event-details.html?id=${item.id}" class="view-btn">
+                            View More
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCards(eventsData.technical, 'techBlock');
+            renderCards(eventsData.workshops, 'workshopBlock');
+        });
+
+        // Tab Switcher
+        function switchTab(type) {
+            const track = document.getElementById('sliderTrack');
+            const btns = document.querySelectorAll('.tab-btn');
+            
+            if (type === 'workshops') {
+                track.style.transform = 'translateX(-50%)';
+                btns[0].classList.remove('active');
+                btns[1].classList.add('active');
+            } else {
+                track.style.transform = 'translateX(0)';
+                btns[1].classList.remove('active');
+                btns[0].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
