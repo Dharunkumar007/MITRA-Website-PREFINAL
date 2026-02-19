@@ -135,7 +135,7 @@ const eventsData = {
             ],
             timeline: "Feb 28, 09:00 AM",
             prize: "₹300",
-            venue: "F12, PT Department",
+            venue: "Lab 3, Admin Block",
             time: "09:00 AM - 03:00 PM",
             on_coordinator: [
                 {
@@ -164,7 +164,7 @@ const eventsData = {
             ],
             timeline: "Mar 01, 10:00 AM",
             prize: "₹400",
-            venue: "F12, PT Department",
+            venue: "LHC 106",
             time: "10:00 AM - 03:00 PM",
             on_coordinator: [
                 {
