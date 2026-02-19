@@ -14,10 +14,10 @@ const eventsData = {
                 "Autonomous or RC allowed",
                 "Best of 3 rounds"
             ],
-            timeline: "Feb 28",
+            timeline: "Feb 28, 04:00 PM",
             prize: "₹15,000",
-            venue: "Main Auditorium",
-            time: "10:00 AM - 04:00 PM",
+            venue: "Hanger 1",
+            time: "04:00 PM - 06:00 PM",
             on_coordinator: [
                 {
                     name: "Sanjith",
@@ -43,10 +43,10 @@ const eventsData = {
                 "Wireless control mandatory",
                 "Voltage limit: 12V"
             ],
-            timeline: "Feb 28",
+            timeline: "Feb 28, 10:00 AM",
             prize: "₹15,000",
-            venue: "Open Ground B",
-            time: "11:00 AM - 05:00 PM",
+            venue: "Hanger 1",
+            time: "10:00 AM - 06:00 PM",
             on_coordinator: [
                 {
                     name: "Sneha M.",
@@ -72,10 +72,10 @@ const eventsData = {
                 "Time penalties for skipping obstacles",
                 "Max battery: 12V 2200mAh"
             ],
-            timeline: "Feb 28",
+            timeline: "Feb 28, 10:00 AM",
             prize: "₹12,000",
-            venue: "OAT",
-            time: "09:00 AM - 03:00 PM",
+            venue: "Opp to Central Workshop",
+            time: "10:00 AM - 06:00 PM",
             on_coordinator: [
                 {
                     name: "Thirlok",
@@ -101,10 +101,10 @@ const eventsData = {
                 "Time limit: 3 mins",
                 "Points per balloon popped"
             ],
-            timeline: "Feb 28",
+            timeline: "Feb 28, 10:00 AM",
             prize: "₹10,000",
-            venue: "LHC Hall 4",
-            time: "02:00 PM - 05:00 PM",
+            venue: "MIT Connect Point",
+            time: "10:00 AM - 06:30 PM",
             on_coordinator: [
                 {
                     name: "Priya D.",
@@ -135,7 +135,7 @@ const eventsData = {
             ],
             timeline: "Feb 28, 09:00 AM",
             prize: "₹300",
-            venue: "Computer Lab 1",
+            venue: "F12, PT Department",
             time: "09:00 AM - 03:00 PM",
             on_coordinator: [
                 {
@@ -164,7 +164,7 @@ const eventsData = {
             ],
             timeline: "Mar 01, 10:00 AM",
             prize: "₹400",
-            venue: "Seminar Hall 2",
+            venue: "F12, PT Department",
             time: "10:00 AM - 03:00 PM",
             on_coordinator: [
                 {
