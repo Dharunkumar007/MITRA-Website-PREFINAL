@@ -60,7 +60,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(to top, var(--background-dark), transparent 80%);
-            z-index: 2;
+            z-index: 1;
         }
 
         .hero-content {
@@ -219,7 +219,7 @@
         }
 
         .back-nav {
-            position: absolute;
+            position: fixed;
             top: 40px;
             left: 40px;
             color: white;
@@ -442,8 +442,6 @@
             // Default values if data missing
             const venue = event.venue || "TBA";
             const time = event.time || "10:00 AM - 04:00 PM";
-            const coorName = event.on_coordinator ? event.on_coordinator.name : "Student Coordinator";
-            const coorPhone = event.on_coordinator ? event.on_coordinator.phone : "+91 98765 43210";
 
             const html = `
                 <div class="hero-section">
@@ -451,7 +449,7 @@
                     <div class="hero-overlay"></div>
                     <div class="hero-content">
                         <div class="event-tags">
-                            <span class="hero-tag red">${event.category || 'Technical'}</span>
+                            <span class="hero-tag ">${event.category || 'Technical'}</span>
                             <span class="hero-tag">Day 1</span>
                             <span class="hero-tag">Team: 1-3</span>
                         </div>
@@ -476,7 +474,6 @@
                             <h2 class="card-header">Rules & Regulations</h2>
                             <div class="card-body">
                                 <ul class="rule-list">
-                                    <li>Team size: 1-3 members (Standard)</li>
                                     ${event.rules.map(rule => `<li>${rule}</li>`).join('')}
                                     <li>Judges' decision will be final.</li>
                                 </ul>
@@ -514,29 +511,31 @@
                             </div>
                         </div>
 
-                        <div class="info-card">
                             <h2 class="card-header">Contact Person</h2>
-                            <div class="icon-label">
-                                <i class="far fa-user icon-box"></i>
-                                <div>
-                                    <span class="label-text">Name</span>
-                                    <span class="value-text">${coorName}</span>
+                            ${event.on_coordinator.map((coor, index) => `
+                                <div class="${index > 0 ? 'mt-6 pt-4 border-t border-gray-800' : ''}">
+                                    <div class="icon-label">
+                                        <i class="far fa-user icon-box"></i>
+                                        <div>
+                                            <span class="label-text">Name</span>
+                                            <span class="value-text">${coor.name}</span>
+                                        </div>
+                                    </div>
+                                    <div class="icon-label">
+                                        <i class="fas fa-phone icon-box"></i>
+                                        <div>
+                                            <span class="label-text">Phone</span>
+                                            <span class="value-text">${coor.phone}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                             <div class="icon-label">
-                                <i class="fas fa-phone icon-box"></i>
-                                <div>
-                                    <span class="label-text">Phone</span>
-                                    <span class="value-text">${coorPhone}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cta-container">
-                            <a href="#" class="cta-btn">Register Now</a>
+                            `).join('')}
                         </div>
                     </div>
                 </div>
+                <div class="cta-container">
+                            <a href="${event.registerLink || '#'}" class="cta-btn">Register Now</a>
+                        </div>
             `;
 
             document.getElementById('content-area').innerHTML = html;
