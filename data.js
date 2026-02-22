@@ -13,7 +13,8 @@ const eventsData = {
                 "Max Weight: 3kg",
                 "Dimensions: 20cm x 20cm",
                 "Autonomous or RC allowed",
-                "Best of 3 rounds"
+                "Best of 3 rounds",
+                "Judges' decision will be final."
             ],
             timeline: "Feb 28, 04:00 PM",
             prize: "₹15,000",
@@ -43,7 +44,8 @@ const eventsData = {
                 "Max Weight: 5kg",
                 "Dimensions: 30cm x 30cm",
                 "Wireless control mandatory",
-                "Voltage limit: 12V"
+                "Voltage limit: 12V",
+                "Judges' decision will be final."
             ],
             timeline: "Feb 28, 10:00 AM",
             prize: "₹15,000",
@@ -73,7 +75,8 @@ const eventsData = {
                 "All-terrain capabilities",
                 "Wireless control",
                 "Time penalties for skipping obstacles",
-                "Max battery: 12V 2200mAh"
+                "Max battery: 12V 2200mAh",
+                "Judges' decision will be final."
             ],
             timeline: "Feb 28, 10:00 AM",
             prize: "₹12,000",
@@ -103,7 +106,8 @@ const eventsData = {
                 "Sharp mechanism allowed",
                 "Safe for spectators",
                 "Time limit: 3 mins",
-                "Points per balloon popped"
+                "Points per balloon popped",
+                "Judges' decision will be final."
             ],
             timeline: "Feb 28, 10:00 AM",
             prize: "₹10,000",
@@ -136,7 +140,7 @@ const eventsData = {
                 "Basic Python/C++ knowledge preferred",
                 "Hands-on simulation with Gazebo",
                 "Duration: 6 hours",
-                "Certificate provided"
+                "Certificate provided",
             ],
             timeline: "Feb 28, 09:00 AM",
             prize: "₹300",
@@ -166,7 +170,8 @@ const eventsData = {
                 "Laptop required (Python installed)",
                 "Basic understanding of Machine Learning recommended",
                 "Real-time robotics AI demo",
-                "Duration: 5 hours"
+                "Duration: 5 hours",
+                "Certificate provided"
             ],
             timeline: "Mar 01, 10:00 AM",
             prize: "₹400",
