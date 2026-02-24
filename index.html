@@ -216,6 +216,228 @@
             transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
+        /* --- HERO SECTION STYLES --- */
+        #hero-top {
+            padding-top: 150px;
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-left .glass-card,
+        .hero-right .glass-card {
+            background: linear-gradient(145deg, #0a0a0a, #141414);
+            border: 2px solid var(--primary-red);
+            border-radius: 16px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(211, 47, 47, 0.25);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 220px;
+        }
+
+        .hero-left .glass-card:hover,
+        .hero-right .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 60px rgba(211, 47, 47, 0.4);
+        }
+
+        .hero-left .glass-card h3,
+        .hero-right .glass-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: var(--text-light);
+            margin: 10px 0;
+            line-height: 1.1;
+        }
+
+        .hero-left .glass-card p,
+        .hero-right .glass-card p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .card-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--primary-red);
+            font-size: 1.8rem;
+        }
+
+        .hero-center {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Added Animation for the logo */
+        @keyframes pulse-logo {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 400px rgba(200, 14, 14, 0.3));
+            }
+
+            100% {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 450px rgba(200, 14, 14, 0.5));
+            }
+        }
+
+        @keyframes pulse-logo-large {
+            0% {
+                transform: scale(1.3);
+                filter: drop-shadow(0 0 400px rgba(200, 14, 14, 0.3));
+            }
+
+            100% {
+                transform: scale(1.4);
+                filter: drop-shadow(0 0 450px rgba(200, 14, 14, 0.5));
+            }
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .timer-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timer-num {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            text-shadow: 0 0 15px rgba(211, 47, 47, 0.6);
+        }
+
+        .timer-label {
+            font-size: 0.75rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-main {
+            background: var(--primary-red);
+            color: white;
+            padding: 18px;
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 0 30px rgba(211, 47, 47, 0.4);
+            border: 2px solid var(--primary-red);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-main:hover {
+            background: transparent;
+            color: var(--primary-red);
+            box-shadow: 0 0 50px rgba(211, 47, 47, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            padding: 18px;
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            border: 2px solid var(--border-color);
+            transition: 0.3s;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+            background-color: rgba(211, 47, 47, 0.05);
+        }
+
+        /* Massive Prize Pool Section */
+        .prize-section {
+            text-align: center;
+            padding: 180px 0;
+        }
+
+        .prize-icon {
+            font-size: 6rem;
+            color: #FFC107;
+            filter: drop-shadow(0 0 30px rgba(255, 193, 7, 0.7));
+            margin-bottom: 25px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .prize-section h3 {
+            font-size: 3rem !important;
+            color: #fff;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .prize-amount {
+            font-family: var(--font-heading);
+            font-size: 9rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            text-shadow: 0 0 60px rgba(211, 47, 47, 0.6);
+            margin: 20px 0;
+            line-height: 1;
+        }
+
+        .prize-text {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+        }
+
         /* Section specific styles */
         .section-header {
             text-align: left;
@@ -264,7 +486,7 @@
             padding-top: 180px;
         }
 
-        #home .container {
+        #home .container>div {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -704,6 +926,26 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .hero-center {
+                order: -1;
+                margin-bottom: 30px;
+            }
+
+            .prize-amount {
+                font-size: 6rem;
+            }
+
+            #hero-top {
+                padding-top: 120px;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 24px;
@@ -758,7 +1000,29 @@
                 transform: rotate(45deg) translate(-5px, -6px);
             }
 
-            /* Hero Section - Centered & Impactful */
+            /* Hero Section - Mobile adjustments */
+            #hero-top {
+                padding-top: 100px;
+                padding-bottom: 60px;
+                min-height: auto;
+            }
+
+            .hero-left .glass-card,
+            .hero-right .glass-card {
+                padding: 30px;
+                min-height: auto;
+            }
+
+            .hero-left .glass-card h3,
+            .hero-right .glass-card h3 {
+                font-size: 2rem;
+            }
+
+            .timer-num {
+                font-size: 1.8rem;
+            }
+
+            /* Home/Welcome Section - Mobile */
             #home {
                 padding-top: 100px;
                 padding-bottom: 60px;
@@ -767,7 +1031,7 @@
                 align-items: center;
             }
 
-            #home .container {
+            #home .container>div {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
@@ -934,6 +1198,27 @@
             .footer-copyright {
                 margin-top: 40px;
             }
+
+            /* Prize section mobile */
+            .prize-section {
+                padding: 100px 0;
+            }
+
+            .prize-icon {
+                font-size: 4rem;
+            }
+
+            .prize-section h3 {
+                font-size: 2rem !important;
+            }
+
+            .prize-amount {
+                font-size: 5rem;
+            }
+
+            .prize-text {
+                font-size: 1.1rem;
+            }
         }
 
         /* Extra small devices */
@@ -942,21 +1227,21 @@
                 padding: 0 16px;
             }
 
-            #home h2,
-            .typewriter-heading {
-                font-size: 1.6rem;
-            }
-
-            .typewriter-cursor {
-                height: 1.6rem;
-            }
-
             .section-header h2 {
                 font-size: 1.5em;
             }
 
-            .hero-logo-container img {
-                max-width: 120px !important;
+            .hero-left .glass-card h3,
+            .hero-right .glass-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .timer-num {
+                font-size: 1.5rem;
+            }
+
+            .prize-amount {
+                font-size: 4rem;
             }
         }
     </style>
@@ -965,17 +1250,15 @@
 <body>
     <header class="main-header" id="main-header">
         <div class="container">
-            <a href="#home" class="logo">
+            <a href="#hero-top" class="logo">
                 <img src="mitra_logo.png" alt="MITRA Logo" style="height: 40px;">
             </a>
             <nav class="main-nav" id="main-nav">
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#hero-top">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#digest">Digest</a></li>
                     <li><a href="#events">Events</a></li>
                     <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -988,6 +1271,66 @@
     </header>
 
     <main>
+        <!-- HERO SECTION - DEXBOT -->
+        <section id="hero-top" class="section">
+            <div class="abstract-bg">
+                <div class="abstract-shape shape-1"></div>
+                <div class="abstract-shape shape-2"></div>
+            </div>
+            <div class="container anim-reveal">
+
+                <div class="hero-grid">
+                    <div class="hero-left">
+                        <div class="glass-card">
+                            <i class="far fa-calendar-alt card-icon"></i>
+                            <p>Event Dates</p>
+                            <h3>28 & 01</h3>
+                            <p style="color: var(--primary-red);">FEB / MAR 2026</p>
+                        </div>
+                        <div class="glass-card">
+                            <i class="fas fa-map-marker-alt card-icon"></i>
+                            <p>Venue</p>
+                            <h3 style="font-size: 1.6rem; line-height: 1.3; margin-bottom: 10px;">Madras Institute of Technology</h3>
+                            <p>Chromepet, Chennai</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-center">
+                        <img src="dexbot_logo.png" alt="DEXBOT 26 Logo" style="width: 100%; max-width: 850px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 0 300px rgba(200, 14, 14, 0.3)); animation: pulse-logo-large 3s infinite alternate;">
+                    </div>
+
+                    <div class="hero-right">
+                        <div class="glass-card">
+                            <i class="fas fa-bolt card-icon"></i>
+                            <p>Registration Closes In</p>
+                            <div class="timer-grid">
+                                <div class="timer-box"><span class="timer-num" id="d">00</span><span class="timer-label">Days</span></div>
+                                <div class="timer-box"><span class="timer-num" id="h">00</span><span class="timer-label">Hrs</span></div>
+                                <div class="timer-box"><span class="timer-num" id="m">00</span><span class="timer-label">Mins</span></div>
+                                <div class="timer-box"><span class="timer-num" id="s">00</span><span class="timer-label">Secs</span></div>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="https://unstop.com/college-fests/chakravyuha-2026-madras-institute-of-technology-mit-anna-university-chennai-tamil-nadu-439521" class="btn-main">REGISTER NOW <i class="fas fa-rocket"></i></a>
+                            <a href="events.html" class="btn-outline">EXPLORE EVENTS & WORKSHOPS</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PRIZE POOL SECTION -->
+        <section class="section prize-section">
+            <div class="container anim-reveal">
+                <div class="prize-icon"><i class="fas fa-trophy"></i></div>
+                <h3>PRIZE POOL</h3>
+                <div class="prize-amount">₹55,000+</div>
+                <p class="prize-text">Compete and win amazing prizes</p>
+            </div>
+        </section>
+
+        <!-- WELCOME TO MITRA SECTION -->
         <section id="home" class="section">
             <div class="abstract-bg">
                 <div class="abstract-shape shape-1"></div>
@@ -996,18 +1339,21 @@
                 <div class="abstract-shape shape-4"></div>
             </div>
             <div class="container anim-reveal">
-                <div>
-                    <h2 id="typewriter" class="typewriter-heading"></h2>
-                    <p>MITRA, the Robotics Club of MIT, empowers students with hands-on experience and interdisciplinary
-                        activities that enhance their skills.</p>
-                    <a href="#about" class="cta-button">Learn More</a>
-                </div>
-                <div class="hero-logo-container">
-                    <img src="mitra_logo.png" alt="MITRA Logo" style="max-width: 350px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 40px;">
+                    <div>
+                        <h2 id="typewriter" class="typewriter-heading"></h2>
+                        <p>MITRA, the Robotics Club of MIT, empowers students with hands-on experience and interdisciplinary
+                            activities that enhance their skills.</p>
+                        <a href="#about" class="cta-button">Learn More</a>
+                    </div>
+                    <div class="hero-logo-container">
+                        <img src="mitra_logo.png" alt="MITRA Logo" style="max-width: 350px;">
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- ABOUT SECTION -->
         <section id="about" class="section">
             <div class="abstract-bg">
                 <div class="abstract-shape shape-1"></div>
@@ -1024,6 +1370,7 @@
             </div>
         </section>
 
+        <!-- DIGEST SECTION -->
         <section id="digest" class="section">
             <div class="abstract-bg">
                 <div class="abstract-shape shape-3"></div>
@@ -1066,6 +1413,7 @@
             </div>
         </section>
 
+        <!-- EVENTS SECTION -->
         <section id="events" class="section">
             <div class="abstract-bg">
                 <div class="abstract-shape shape-1"></div>
@@ -1094,6 +1442,7 @@
             </div>
         </section>
 
+        <!-- GALLERY SECTION -->
         <section id="gallery" class="section">
             <div class="abstract-bg">
                 <div class="abstract-shape shape-3"></div>
@@ -1137,6 +1486,7 @@
             </div>
         </section>
 
+        <!-- FAQ SECTION -->
         <section id="faq" class="section">
             <div class="abstract-bg">
                 <div class="abstract-shape shape-1"></div>
@@ -1200,6 +1550,7 @@
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer id="contact" class="main-footer">
         <div class="abstract-bg">
             <div class="abstract-shape shape-3"></div>
@@ -1211,8 +1562,8 @@
             </div>
             <div class="footer-content">
                 <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
+                    <a href="#hero-top">Home</a>
+                    <a href="#home">About MITRA</a>
                     <a href="#digest">Digest</a>
                     <a href="#events">Events</a>
                     <a href="#gallery">Gallery</a>
@@ -1301,6 +1652,25 @@
                 }
                 typeWriter();
             }
+
+            // Countdown Timer for DEXBOT
+            const eventDate = new Date('February 28, 2026 00:00:00').getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = eventDate - now;
+
+                if (diff > 0) {
+                    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const s = Math.floor((diff % (1000 * 60)) / 1000);
+                    
+                    if(document.getElementById('d')) document.getElementById('d').innerText = d.toString().padStart(2, '0');
+                    if(document.getElementById('h')) document.getElementById('h').innerText = h.toString().padStart(2, '0');
+                    if(document.getElementById('m')) document.getElementById('m').innerText = m.toString().padStart(2, '0');
+                    if(document.getElementById('s')) document.getElementById('s').innerText = s.toString().padStart(2, '0');
+                }
+            }, 1000);
 
             // Digest Gallery Logic
             const galleryOverlay = document.getElementById('galleryOverlay');
