@@ -9,12 +9,19 @@ const eventsData = {
             image: "events_img/robo%20sumo.png",
             registerLink: "https://unstop.com/competitions/robo-sumo-madras-institute-of-technology-mit-anna-university-chennai-tamil-nadu-1640747",
             rules: [
-                "Team size: 1-3 members",
-                "Max Weight: 3kg",
-                "Dimensions: 20cm x 20cm",
-                "Autonomous or RC allowed",
-                "Best of 3 rounds",
-                "Judges' decision will be final."
+                "Max Size: 30 cm × 30 cm × 30 cm (Length × Width × Height)",
+                "Max Weight: 5 kg",
+                "Power Supply : Onboard",
+                "Team Size: 1 – 4 Members, one robot per team.",
+                "Goal: Push opponent out of ring or immobilize them.",
+                "Match Duration: 3 minutes",
+                "Control: Remote-controlled (wired or wireless).",
+                "Scoring: Win by staying inside the ring or pushing opponent out.",
+                "If robot cannot move, opponent wins.",
+                "Safety: No sharp parts, flames, projectiles, liquids, or dangerous materials.",
+                "Robots must not damage the arena.",
+                "Judges’ decision will be final.",
+                "Online & on-spot registration available."
             ],
             timeline: "Feb 28, 04:00 PM",
             prize: "₹15,000",
@@ -40,12 +47,19 @@ const eventsData = {
             image: "events_img/robo soccer.jpeg",
             registerLink: "https://unstop.com/competitions/robo-soccer-madras-institute-of-technology-mit-anna-university-chennai-tamil-nadu-1640798",
             rules: [
-                "Team size: 1-3 members",
-                "Max Weight: 5kg",
-                "Dimensions: 30cm x 30cm",
-                "Wireless control mandatory",
-                "Voltage limit: 12V",
-                "Judges' decision will be final."
+                "Max Size: 30 cm × 30 cm × 30 cm (Length × Width × Height)",
+                "Max Weight: 5 kg",
+                "Power Supply : Onboard",
+                "Team Size: 1 – 4 Members, one robot per team.",
+                "Goal: Score maximum number of goals within the given time limit.",
+                "Match Duration: 3 minutes",
+                "Control: Remote-controlled (wired or wireless).",
+                "Scoring: 1 point for each goal scored. Team with highest goals wins.",
+                "If robot cannot move, referee decision will apply.",
+                "Safety: No sharp parts, flames, projectiles, liquids, or dangerous materials.",
+                "Robots must not damage the arena or goal posts.",
+                "Judges’ decision will be final.",
+                "Online & on-spot registration available."
             ],
             timeline: "Feb 28, 10:00 AM",
             prize: "₹15,000",
@@ -53,12 +67,8 @@ const eventsData = {
             time: "10:00 AM - 06:00 PM",
             on_coordinator: [
                 {
-                    name: "Sneha M.",
-                    phone: "+91 99887 76655"
-                },
-                {
-                    name: "Karthik S.",
-                    phone: "+91 99887 11223"
+                    name: "SubhashChandra Bose A.",
+                    phone: "+91 90255 40833"
                 }
             ]
         },
@@ -71,12 +81,20 @@ const eventsData = {
             image: "events_img/robo rush.jpeg",
             registerLink: "https://unstop.com/competitions/robo-rush-madras-institute-of-technology-mit-anna-university-chennai-tamil-nadu-1640816",
             rules: [
-                "Team size: 1-3 members",
-                "All-terrain capabilities",
-                "Wireless control",
-                "Time penalties for skipping obstacles",
-                "Max battery: 12V 2200mAh",
-                "Judges' decision will be final."
+                "Max Size: 30 cm × 30 cm × 30 cm (Length × Width × Height)",
+                "Max Weight: 5 kg",
+                "Power Supply : Onboard",
+                "Team Size: 1 – 4 Members, one robot per team.",
+                "Goal: Complete the all-terrain obstacle course in the shortest time.",
+                "Match Duration: 3 minutes (per attempt)",
+                "Control: Remote-controlled (wired or wireless).",
+                "Scoring: Robot completing the course in the least time wins.",
+                "Time penalties will be added for skipping obstacles or rule violations.",
+                "If robot cannot move, the attempt will be terminated.",
+                "Safety: No sharp parts, flames, projectiles, liquids, or dangerous materials.",
+                "Robots must not damage the arena or obstacles.",
+                "Judges’ decision will be final.",
+                "Online & on-spot registration available."
             ],
             timeline: "Feb 28, 10:00 AM",
             prize: "₹12,000",
@@ -102,12 +120,20 @@ const eventsData = {
             image: "events_img/robo pop.jpeg",
             registerLink: "https://unstop.com/competitions/robo-popz-madras-institute-of-technology-mit-anna-university-chennai-tamil-nadu-1640829",
             rules: [
-                "Team size: 1-3 members",
-                "Sharp mechanism allowed",
-                "Safe for spectators",
-                "Time limit: 3 mins",
-                "Points per balloon popped",
-                "Judges' decision will be final."
+                "Max Size: 30 cm × 30 cm × 30 cm (Length × Width × Height)",
+                "Max Weight: 5 kg",
+                "Power Supply : Onboard",
+                "Team Size: 1 – 4 Members, one robot per team.",
+                "Goal: Pop the maximum number of balloons within the given time limit.",
+                "Match Duration: 3 minutes",
+                "Control: Remote-controlled (wired or wireless).",
+                "Scoring: 1 point for each balloon popped. Team with highest points wins.",
+                "Balloons must be popped using the robot only.",
+                "If robot cannot move, the attempt will be terminated.",
+                "Safety: No flames, explosives, liquids, or dangerous materials allowed.",
+                "Robots must not damage the arena structure.",
+                "Judges’ decision will be final.",
+                "Online & on-spot registration available."
             ],
             timeline: "Feb 28, 10:00 AM",
             prize: "₹10,000",
@@ -115,12 +141,12 @@ const eventsData = {
             time: "10:00 AM - 06:30 PM",
             on_coordinator: [
                 {
-                    name: "Priya D.",
-                    phone: "+91 88776 65544"
+                    name: "Navin",
+                    phone: "+91 86101 86796"
                 },
                 {
-                    name: "Rohan V.",
-                    phone: "+91 88776 22334"
+                    name: "Dharunkumar V",
+                    phone: "+91 94458 29217"
                 }
             ]
         }
